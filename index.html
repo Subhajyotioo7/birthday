@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle, #ffecf5, #ffe4f0, #ffc1de);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      perspective: 1000px;
+      font-family: 'Comic Sans MS', cursive;
+      flex-direction: column;
+    }
+
+    .scene {
+      transform-style: preserve-3d;
+      animation: spin 10s linear infinite;
+    }
+
+    .text {
+      font-size: 60px;
+      font-weight: bold;
+      color: #ff69b4;
+      text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4, 0 0 30px #ff1493;
+      transform: rotateY(0deg);
+      transform-style: preserve-3d;
+    }
+
+    .name {
+      margin-top: 20px;
+      font-size: 40px;
+      font-weight: bold;
+      color: #ff1493;
+      text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
+      animation: glow 2s ease-in-out infinite, bounce 2s infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
+      }
+      50% {
+        text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+    /* Confetti-style effect using small circles */
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ff69b4;
+      border-radius: 50%;
+      animation: float 5s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .message {
+      margin-top: 30px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #ff4500;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      text-shadow: 0 0 5px #ff6347, 0 0 10px #ff4500, 0 0 15px #ff6347;
+      animation: fadeIn 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 3D Rotating Text -->
+  <div class="scene">
+    <div class="text">🎉 Happy Birthday 🎉</div>
+  </div>
+
+  <!-- Styled Name -->
+  <div class="name">Pratyusha Kar</div>
+
+  <!-- Birthday Message -->
+  <div class="message">May your day be as special as you are! 🌟🎂🎁</div>
+
+  <!-- Confetti Generator -->
+  <script>
+    for (let i = 0; i < 100; i++) {
+      let confetti = document.createElement("div");
+      confetti.className = "confetti";
+      confetti.style.left = Math.random() * 100 + "vw";
+      confetti.style.top = Math.random() * -100 + "px";
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      confetti.style.animationDuration = `${Math.random() * 3 + 3}s`;
+      document.body.appendChild(confetti);
+    }
+  </script>
+
+</body>
+</html>
