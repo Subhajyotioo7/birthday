@@ -1,147 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Happy Birthday 🎉</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Pratyusha 🎉</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: radial-gradient(circle, #ffecf5, #ffe4f0, #ffc1de);
+      padding: 0;
+    }
+
+    body {
       height: 100vh;
+      background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       overflow: hidden;
-      perspective: 1000px;
-      font-family: 'Comic Sans MS', cursive;
-      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .scene {
-      transform-style: preserve-3d;
-      animation: spin 10s linear infinite;
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 2rem 3rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      z-index: 10;
+      max-width: 90%;
+      width: 400px;
+      animation: floatCard 6s ease-in-out infinite;
     }
 
-    .text {
-      font-size: 60px;
-      font-weight: bold;
-      color: #ff69b4;
-      text-shadow: 0 0 10px #ff1493, 0 0 20px #ff69b4, 0 0 30px #ff1493;
-      transform: rotateY(0deg);
-      transform-style: preserve-3d;
+    .card h1 {
+      font-size: 2.5rem;
+      color: #e91e63;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px #ff80ab;
     }
 
-    .name {
-      margin-top: 20px;
-      font-size: 40px;
-      font-weight: bold;
-      color: #ff1493;
-      text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
-      animation: glow 2s ease-in-out infinite, bounce 2s infinite;
+    .card h2 {
+      font-size: 1.5rem;
+      color: #c2185b;
+      margin-bottom: 20px;
     }
 
-    @keyframes glow {
-      0%, 100% {
-        text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff1493, 0 0 15px #ff69b4;
-      }
-      50% {
-        text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493, 0 0 30px #ff69b4;
-      }
+    .card p {
+      font-size: 1rem;
+      color: #6d4c41;
+      margin-top: 10px;
     }
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-20px);
-      }
+    @keyframes floatCard {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .layer {
+    /* Balloons */
+    .balloon {
       position: absolute;
-      top: 0;
-      left: 0;
-      transform-style: preserve-3d;
+      bottom: -100px;
+      width: 40px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, #ff4081, #f06292);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: rise 10s linear infinite;
     }
 
-    @keyframes spin {
-      from {
-        transform: rotateY(0deg);
-      }
-      to {
-        transform: rotateY(360deg);
-      }
-    }
-
-    /* Confetti-style effect using small circles */
-    .confetti {
+    .balloon::after {
+      content: '';
       position: absolute;
-      width: 8px;
-      height: 8px;
-      background: #ff69b4;
-      border-radius: 50%;
-      animation: float 5s linear infinite;
-      opacity: 0.6;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #8d6e63;
+      transform: translateX(-50%);
     }
 
-    @keyframes float {
+    .balloon:nth-child(1) {
+      left: 20%;
+      animation-delay: 0s;
+    }
+
+    .balloon:nth-child(2) {
+      left: 50%;
+      animation-delay: 2s;
+    }
+
+    .balloon:nth-child(3) {
+      left: 75%;
+      animation-delay: 4s;
+    }
+
+    @keyframes rise {
       0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translateY(0) scale(1);
         opacity: 1;
       }
       100% {
-        transform: translateY(100vh) rotate(720deg);
+        transform: translateY(-120vh) scale(1.1);
         opacity: 0;
       }
     }
 
-    .message {
-      margin-top: 30px;
-      font-size: 30px;
-      font-weight: bold;
-      color: #ff4500;
-      text-align: center;
-      font-family: 'Comic Sans MS', cursive;
-      text-shadow: 0 0 5px #ff6347, 0 0 10px #ff4500, 0 0 15px #ff6347;
-      animation: fadeIn 3s ease-in-out infinite;
-    }
-
-    @keyframes fadeIn {
-      0%, 100% {
-        opacity: 0.5;
+    /* Responsive Text */
+    @media (max-width: 500px) {
+      .card h1 {
+        font-size: 2rem;
       }
-      50% {
-        opacity: 1;
+      .card h2 {
+        font-size: 1.2rem;
+      }
+      .card p {
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 3D Rotating Text -->
-  <div class="scene">
-    <div class="text">🎉 Happy Birthday 🎉</div>
+  <!-- Balloons 🎈 -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+
+  <!-- Birthday Card -->
+  <div class="card">
+    <h1>🎉 Happy Birthday 🎉</h1>
+    <h2>Pratyusha Kar</h2>
+    <p>May your smile shine brighter than the candles on your cake!</p>
+    <p>Wishing you endless joy, laughter, and magical moments today 💖</p>
   </div>
 
-  <!-- Styled Name -->
-  <div class="name">Pratyusha Kar</div>
-
-  <!-- Birthday Message -->
-  <div class="message">May your day be as special as you are! 🌟🎂🎁</div>
-
-  <!-- Confetti Generator -->
-  <script>
-    for (let i = 0; i < 100; i++) {
-      let confetti = document.createElement("div");
-      confetti.className = "confetti";
-      confetti.style.left = Math.random() * 100 + "vw";
-      confetti.style.top = Math.random() * -100 + "px";
-      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 70%)`;
-      confetti.style.animationDuration = `${Math.random() * 3 + 3}s`;
-      document.body.appendChild(confetti);
-    }
-  </script>
+  <!-- Background Music (Optional) -->
+  <!--
+  <audio autoplay loop>
+    <source src="your-birthday-song.mp3" type="audio/mpeg">
+  </audio>
+  -->
 
 </body>
 </html>
